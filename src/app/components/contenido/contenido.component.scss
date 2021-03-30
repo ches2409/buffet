@@ -1,0 +1,240 @@
+@import '../../../utilities';
+
+.hero{
+  background-image: url(../../../assets/images/imgHeader.png);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat( 12, 1fr);
+  .subtitle{
+    grid-column: 2 / 12;
+    grid-row: 5 / 7;
+  }
+  .containerLogo{
+    // background-color: red;
+    background-image: url(../../../assets/images/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    grid-column: 4 / 10;
+    grid-row: 8 / 13;
+  }
+}
+
+.main{
+  &__corporate{
+    height: 70vh;
+    &--wrapper{
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(12, 1fr);
+
+      &-background{
+        background-image: url(../../../assets/images/img1.png);
+        background-repeat: no-repeat;
+        background-position: -20vh 0;
+        background-size: contain;
+        grid-column: 1 / 6;
+        grid-row: 1 / 13;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .title{
+          background-color: $primario;
+          padding: 0 10rem;
+          color: #fff;
+        }
+      }
+      &-content{
+        grid-column: 6 / 12;
+        grid-row: 3 / 11;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .title{
+          color:$primario;
+          font-size: 2rem;
+        }
+        .text{
+          text-align: justify;
+        }
+        .address{
+          text-align: center;
+          font-size: 1.5rem;
+          p{
+            color: #d60b52;
+          }
+        }
+      }
+    }
+  }
+  &__access{
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--link{
+      height: 250px;
+      width: 250px;
+      margin: 0 2rem;
+      .accImg{
+        background: linear-gradient(rgba(237, 28, 40,1), rgba(186, 34, 91,1));
+        border-radius: 40px;
+        height: 80%;
+        width: 80%;
+      }
+      .accTxt{
+        text-align: center;
+        font-size: 2.5rem;
+        color: blue;
+      }
+    }
+  }
+  &__infoParallax{
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 60vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr );
+    align-items: center;
+    &--content{
+      background-color: rgba(255, 255, 255, 0.5);
+      grid-column: 1 / 7;
+      padding: 4rem 1rem;
+    }
+    &--title{
+      // background-color: gold;
+      grid-column: 7 / 13;
+      color: #d60b52;
+      text-shadow: 2px 2px 5px #ffffff;
+      font-size: 7.5rem;
+      display: flex;
+      justify-content: center;align-items: center;
+      font-family: $ftRoboto;
+      font-weight: 700;
+    }
+  }
+  .parL{
+    background-image: url(../../../assets/images/par1.jpg);
+    background-position: bottom;
+  }
+  .parR{
+    background-image: url(../../../assets/images/par2.jpg);
+    background-position: center;
+  }
+  &__shop{
+    background-image: url(../../../assets/images/bgC.png);
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: 100vh 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 4rem 0;
+    &--product{
+      margin: 2rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70vw;
+      &-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .productBack{
+          height: 300px;
+          width: 300px;
+          background: linear-gradient(rgba(237, 28, 40,1), rgba(186, 34, 91,1));
+          border-radius: 100%;
+          .productImg{
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            height: 110%;
+            width: 110%;
+          }
+        }
+      }
+      &-content{
+        text-align: center;
+        margin: 0 2rem;
+        padding: 0 2rem;
+        .productPrice{
+          font-size: 2.5rem;
+          color: $primario;
+        }
+      }
+    }
+    .sectL{
+      flex-direction: row-reverse;
+    }
+  }
+  .sec2{
+    background-position: -70% 90%;
+  }
+  .img01{
+    background-image: url(../../../assets/images/pr1.png);
+  }
+  .img02{
+    background-image: url(../../../assets/images/pr2.png);
+  }
+  .img03{
+    background-image: url(../../../assets/images/pr3.png);
+  }
+  .img04{
+    background-image: url(../../../assets/images/pr4.png);
+  }
+  .img05{
+    background-image: url(../../../assets/images/pr1.png);
+  }
+  .img06{
+    background-image: url(../../../assets/images/pr2.png);
+  }
+  .img07{
+    background-image: url(../../../assets/images/pr3.png);
+  }
+  .img08{
+    background-image: url(../../../assets/images/pr4.png);
+  }
+}
+.footer{
+  background-image: url(../../../assets/images/imgFooter.png);
+  background-repeat: no-repeat;
+  background-position: 115% 0;
+  background-size: 35%;
+  height: 60vh;
+  .footerWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1rem 4rem;
+  }
+  &__title{
+    width: 100%;
+    text-align: center;
+    h3{
+      font-size: 2rem;
+    }
+  }
+  &__subtitle{
+    width: 100%;
+    text-align: center;
+  }
+  &__image{
+    background-image: url(../../../assets/images/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
+    height: 300px;
+    width: 550px;
+  }
+}
