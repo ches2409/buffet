@@ -8,8 +8,34 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
+  <header id="header">
+  <a class="logo" href="#inicio">
+    <div class="img"></div>
+  </a>
+  <div id="toggle"></div>
+  <div id="navbar">
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">nosotros</a></li>
+      <li><a href="#equipo">equipo</a></li>
+      <li><a href="#servicios">servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</header>
   <app-root></app-root>
+  <script>
+    const header = document.getElementById('header');
+    const toggle = document.getElementById('toggle');
+    const navbar = document.getElementById('navbar');
+    //let header = "esta es la variabe";
+    document.onclick=function(e){if (e.target.id !=='header' && e.target.id !== 'toggle' && e.target.id !== 'navbar') {toggle.classList.remove('active'), navbar.classList.remove('active')}}
+    toggle.onclick = function(){toggle.classList.toggle('active'), navbar.classList.toggle('active')}
+    console.log(header);
+    console.log("pruebaaaaa")
+  </script>
 </body>
 </html>
