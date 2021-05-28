@@ -40,14 +40,6 @@ img{
 // =========================== MENU ===============================
 // ================================================================
 
-// Colores para el menu
-$bgMenu        : rgb(247, 34, 106, 1);
-$bgMenuAlpha   : rgb(247, 34, 106, 0.2);
-$bgToggle      : rgb(144, 81, 255);
-$bgToggleAplha : rgb(144, 81, 255,.2);
-$bgToogleActive: rgb(247, 34, 106);
-$txtColor      : #fff;
-$txtColorHover : #12334e;
 
 @mixin borderRadius ($dir){
   @if $dir == left {
@@ -104,160 +96,12 @@ $txtColorHover : #12334e;
 *{
   scroll-behavior: smooth;
 }
-header{
-  //background-color: rgba(247, 34, 106, 0.2);
-  @include styleMenu(morphMedium);
-  position: fixed;
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  z-index: 1000;
-}
-.logo{
-  height: 60px;
-  width: 150px;
-  line-height: 60px;
-  color: #12334e;
-  font-weight: 700;
-  font-size: 2rem;
-  text-decoration: none;
-  cursor: pointer;
-  padding-left: 20px;
 
-  background-image: url("./assets/images/logo.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-#toggle{
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  background-color: #9051ff;
-  @include borderRadius(left);
-  cursor: pointer;
-  @include centerFlex;
-  transition: .5s;
-  &::before{
-    content:'';
-    position: absolute;
-    width: 28px;
-    height: 2px;
-    background-color: #fff;
-    transform: translateY(-10px);
-    transition: 0.2s;
-    box-shadow: 0 10px 0 #fff;
-  }
-  &::after{
-    content:'';
-    position: absolute;
-    width: 28px;
-    height: 2px;
-    background-color: #fff;
-    transform: translateY(10px);
-    transition: 0.2s;
-  }
-  &.active{
-    background-color: rgb(247, 34, 106);
-    //border-radius: 0 50px 50px 0;
-    @include borderRadius(none);
-    transition: .5s;
-    &::before{
-      transform: translateY(0px) rotate(45deg);
-      box-shadow: 0 0 0 #fff;
-    }
-    &::after{
-      transform: translateY(0px) rotate(-45deg);
-    }
-  }
-
-}
-#navbar{
-  position: relative;
-  height: 60px;
-  right: 60px;
-  transition: .5s;
-  width: 0;
-  overflow: hidden;
-  &.active{
-    width: 660px;
-    //background-color: rgba(247, 34, 106, 0.2);
-    //backdrop-filter:blur(10px);
-    @include borderRadius(none);
-    transition: all .7s ease-in-out;
-  }
-  ul{
-    //background-color: #fff;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    padding-left: 3rem;
-    li{
-      list-style: none;
-      a{
-        color: #12334e;
-        height: 60px;
-        line-height: 60px;
-        display: inline-block;
-        text-decoration: none;
-        font-size: 1.2rem;
-        padding: 0 15px;
-        letter-spacing: 2px;
-        white-space: normal;
-        transition: 1s;
-        &:hover{
-          color: #fff;
-          background: #9051ff;
-          //transition: background .3s ease-in-out .1s, color .3s;
-          transition: 0s;
-        }
-      }
-    }
-  }
-}
 
 
 
 @media (max-width: 991px){
-  header{
-    // backdrop-filter:none;
-    // box-shadow: 0 5px 25px rgba(0, 0, 0, 0);
-    @include styleMenu(none)
-  }
-  .logo, #toggle{
-    z-index: 2000;
-  }
-  #navbar{
-    //background-color: #fff;
-    @include styleMenu(morphUnique);
-    position: fixed;
-    bottom: -100%;
-    right: 0;
-    width: 100%;
-    transition: .5s;
-    @include centerFlex;
-    height: calc(100vh - 60px);
 
-    &.active{
-      //height: calc(100vh - 60px);
-      height: 100vh;
-      bottom: 0;
-      width: 100%;
-      border-radius: 0;
-    }
-    ul{
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-  #toggle.active{
-    @include borderRadius(complete)
-  }
 }
 
 

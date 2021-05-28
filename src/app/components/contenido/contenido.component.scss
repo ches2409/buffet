@@ -5,490 +5,486 @@
 // =========================== MENU ===============================
 // ================================================================
 
-// Colores para el menu
-$bgMenu        : rgb(247, 34, 106, 1);
-$bgMenuAlpha   : rgb(247, 34, 106, 0.2);
-$bgToggle      : rgb(144, 81, 255);
-$bgToggleAplha : rgb(144, 81, 255,.2);
-$bgToogleActive: rgb(247, 34, 106);
-$txtColor      : #fff;
-$txtColorHover : #12334e;
-
-@mixin borderRadius ($dir){
-  @if $dir == left {
-    border-radius: 50px 0 0 50px;
-  }
-  @if $dir == right {
-    border-radius: 0 50px 50px 0;
-  }
-  @if $dir == top {
-    border-radius: 50px 50px 0 0;
-  }
-  @if $dir == bottom {
-    border-radius: 0 0 50px 50px;
-  }
-  @if $dir == complete {
-    border-radius: 50px;
-  }
-  @if $dir == none {
-    border-radius: 0;
-  }
-}
-@mixin styleMenu ($style) {
-  @if $style == morphSoft {
-    backdrop-filter: blur(8px);
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  }
-  @if $style == morphHard {
-    backdrop-filter: blur(50px);
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  }
-  @if $style == morphMedium {
-    backdrop-filter: blur(15px);
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  }
-  @if $style == morphUnique {
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0);
-  }
-  @if $style == transparent {
-    //backdrop-filter: none;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  }
-  @if $style == none {
-    backdrop-filter: none;
-    box-shadow: none;
-  }
-}
-@mixin centerFlex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 *{
   scroll-behavior: smooth;
 }
-header{
-  //background-color: rgba(247, 34, 106, 0.2);
-  @include styleMenu(morphMedium);
+
+
+
+.hamburger:focus {
+  outline: 0;
+  border: 0;
+}
+
+.hamburger-inner,
+.hamburger-inner:after,
+.hamburger-inner:before { background-color: $hamburger-color2; }
+
+.u-afterFixed { padding-top: $header-height; }
+
+.Header {
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  height: $header-height;
+  transition: all .3s ease-out;
+  background-color: $header-bg-op-0;
+  transition: background-color .3s linear;
+
+  &.is-active {
+    background-color: $header-bg-op-1;
+  }
+
+  &-container {
+    margin: auto;
+    max-width: $header-container-width;
+    display: grid;
+    grid-template: {
+      columns: repeat(3, 1fr);
+      rows: $header-height, auto;
+      areas: $header-area
+             'panel panel panel';
+    }
+  }
+}
+
+.Logo {
+  // background-color: red;
+  opacity: 0;
+  z-index: 10001;
+  grid-area: logo;
+  justify-self: $logo-position;
+  @include centerFlex;
+  transition: opacity .3s ease-in;
+  &.is-active{
+    opacity: 1;
+  }
+
+  &-link {
+    display: block;
+    width: $logo-width;
+    height: $logo-height;
+    text-indent: -9999px;
+    background: {
+      image: url($logo-url);
+      size: $logo-bg-size;
+      repeat: no-repeat;
+      position: center;
+    }
+  }
+}
+
+.Panel {
   position: fixed;
   top: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
+  bottom: 0;
   width: 100%;
-  z-index: 1000;
-}
-.logo{
-  height: 60px;
-  width: 150px;
-  line-height: 60px;
-  color: #12334e;
-  font-weight: 700;
-  font-size: 2rem;
-  text-decoration: none;
-  cursor: pointer;
-  padding-left: 20px;
+  overflow-y: auto;
+  grid-area: panel;
+  background-color: $header-bg-op-2;
+  // background-color: violet;
+  transition: transform .3s ease-out;
+  @include panel-direction(left);
 
-  background-image: url(../../../assets/images/logo.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  &-button {
+    z-index: 999;
+    grid-area: hamburger;
+    justify-self: $hamburger-position;
+  }
 }
-#toggle{
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  background-color: #9051ff;
-  @include borderRadius(left);
-  cursor: pointer;
-  @include centerFlex;
-  transition: .5s;
-  &::before{
-    content:'';
-    position: absolute;
-    width: 28px;
-    height: 2px;
-    background-color: #fff;
-    transform: translateY(-10px);
-    transition: 0.2s;
-    box-shadow: 0 10px 0 #fff;
-  }
-  &::after{
-    content:'';
-    position: absolute;
-    width: 28px;
-    height: 2px;
-    background-color: #fff;
-    transform: translateY(10px);
-    transition: 0.2s;
-  }
-  &.active{
-    background-color: rgb(247, 34, 106);
-    //border-radius: 0 50px 50px 0;
-    @include borderRadius(none);
-    transition: .5s;
-    &::before{
-      transform: translateY(0px) rotate(45deg);
-      box-shadow: 0 0 0 #fff;
-    }
-    &::after{
-      transform: translateY(0px) rotate(-45deg);
-    }
-  }
+.Menu {
+  margin-top: calc(#{$header-height} + 2rem);
 
-}
-#navbar{
-  position: relative;
-  height: 60px;
-  right: 60px;
-  transition: .5s;
-  width: 0;
-  overflow: hidden;
-  &.active{
-    width: 660px;
-    //background-color: rgba(247, 34, 106, 0.2);
-    //backdrop-filter:blur(10px);
-    @include borderRadius(none);
-    transition: all .7s ease-in-out;
-  }
-  ul{
-    //background-color: #fff;
-    position: relative;
+   &-listItem {
     display: flex;
-    flex-direction: row;
-    padding-left: 3rem;
-    li{
-      list-style: none;
-      a{
-        color: #12334e;
-        height: 60px;
-        line-height: 60px;
-        display: inline-block;
-        text-decoration: none;
-        font-size: 1.2rem;
-        padding: 0 15px;
-        letter-spacing: 2px;
-        white-space: normal;
-        transition: 1s;
-        &:hover{
-          color: #fff;
-          background: #9051ff;
-          //transition: background .3s ease-in-out .1s, color .3s;
-          transition: 0s;
-        }
+    flex-direction: column;
+    text-align: center;
+    list-style: none;
+  }
+
+  &-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    font: {
+      weight: 500;
+      size: 1.5rem;
+    }
+    color: $baseredes;
+    text-decoration: none;
+    transition: all .3s ease-out;
+  }
+
+  &-link:hover {
+    color: $primario;
+    text-transform: uppercase;
+    transition: all .5s ease-out;
+    background-color: $color;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  .Header {
+    background-color: $header-bg-op-2;
+    &-container {
+      grid-template: {
+        columns: auto 1fr;
+        rows: $header-height;
+        areas: 'logo panel';
       }
     }
   }
-}
 
-
-
-@media (max-width: 991px){
-  header{
-    // backdrop-filter:none;
-    // box-shadow: 0 5px 25px rgba(0, 0, 0, 0);
-    @include styleMenu(none)
+  .Logo {
+    // background-color: green;
+    // justify-self: center;
+    // display: flex;
+    // justify-content: center;
+    align-self: start;
+    // align-items: center;
+    // align-content: center;
   }
-  .logo, #toggle{
-    z-index: 2000;
-  }
-  #navbar{
-    //background-color: #fff;
-    @include styleMenu(morphUnique);
-    position: fixed;
-    bottom: -100%;
-    right: 0;
-    width: 100%;
-    transition: .5s;
-    @include centerFlex;
-    height: calc(100vh - 60px);
 
-    &.active{
-      //height: calc(100vh - 60px);
-      height: 100vh;
-      bottom: 0;
-      width: 100%;
-      border-radius: 0;
-    }
-    ul{
-      flex-direction: column;
-      justify-content: center;
+  .Panel {
+    position: static;
+    overflow-y: visible;
+    transform: translate(0, 0);
+    background-color: transparent;
+
+    &-button { display: none; }
+  }
+
+  .Menu {
+    margin-top: 0;
+
+    &-listItem {
+      flex-direction: row;
+      justify-content: flex-end;
       align-items: center;
     }
-  }
-  #toggle.active{
-    @include borderRadius(complete)
+
+    &-link { border-top: medium solid transparent; }
+
+    &-link:hover {
+      border-top: medium solid $primario;
+      background-color: transparent;
+    }
   }
 }
+
+
+
+// #########################################################
+// codigo de sitio
+// #########################################################
+
 
 
 .hero{
-  // background-color: red;
-  background-image: url(../../../assets/images/imgHeader.png);
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: 350%;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat( 12, 1fr);
-  .subtitle{
+  .hero{
     //background-color: orange;
-    grid-column: 2 / 12;
-    grid-row: 2 / 9;
-    text-align: center;
+    height: 100vh;
+    @include gridBase;
+    &__logo{
+      //background-color: royalblue;
+      grid-column: 2 / 9;
+      grid-row: 3 / 6;
+    }
+    &__phrase{
+      //background-color: aqua;
+      grid-column: 2 / 9;
+      grid-row: 6 / 7;
+    }
+    &__register{
+      //background-color: firebrick;
+      grid-column: 2 / 9;
+      grid-row: 8 / 13;
+    }
   }
-  .containerLogo{
-    // background-color: red;
-    background-image: url(../../../assets/images/logo.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    grid-column: 2 / 12;
-    grid-row: 9 / 13;
-  }
+
 }
 
-.main{
-  &__corporate{
-    // background-color: #d60b52;
-    height: 70vh;
-    &--wrapper{
-      // background-color: darkblue;
-      height: 100%;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(12, 1fr);
+.hero{
+    //background-color: orange;
+    //background-image: url(../../../assets/images/header.png);
+    @include bgImages('hero_1366.png', cover, top left);
+    &__logo{
+      //background-color: royalblue;
+      @include bgImages('logoNegativo.svg', contain, center )
+    }
+    &__phrase{
+      //background-color: aqua;
+      @include centerFlex;
+      color:$baseredes;
 
-      &-background{
-        background-image: url(../../../assets/images/img1.png);
-        background-repeat: no-repeat;
-        background-position: 150% 50%;
-        background-size: 140%;
-        grid-column: 1 / 13;
-        grid-row: 1 / 13;
+    }
+    &__register{
+      //background-color: firebrick;
+      text-align: center;
+      @include centerFlex;
+      flex-wrap: wrap;
+      .subtitle{
+        padding: 4rem 0 0 0;
+      }
+      .apps{
+        //background-color: red;
+        width: 100%;
+        @include centerFlex
+      }
+
+    }
+  }
+  .googlePlay, .appStore{
+    height: 150px;
+    width: 300px;
+    margin: 0 1rem;
+  }
+  .googlePlay{
+    @include bgImages('google.png', contain, center);
+  }
+  .appStore{
+    @include bgImages('app.png', contain, center)
+  }
+
+
+  .main{
+  // background-color: yellowgreen;
+  &__plus{
+    //background-color: salmon;
+    &--options{
+      //background-color: red;
+      @include centerFlex;
+      flex-wrap: wrap;
+      .optionContainer{
+        //background-color: forestgreen;
+        text-align: center;
+        height: 300px;
+        width: 300px;
+        margin: 1rem;
         display: flex;
         justify-content: center;
-        align-items: flex-start;
+        flex-wrap: wrap;
+        .icon{
+          //background-color: sienna;
+          margin: 1rem 0;
+          padding: 1rem 0;
+          height: 40%;
+          width: 100%;
+        }
         .title{
-          background-color: $primario;
-          padding: 1rem 2rem;
+          // background-color: lawngreen;
+          width: 100%;
+          h2{
+            font-size: 1.5rem;
+          }
+        }
+        .text{
+          // background-color: fuchsia;
+          width: 100%;
+        }
+      }
+      .op1 .icon{
+        @include bgImages('char1.png', contain, center);
+      }
+      .op2 .icon{
+        @include bgImages('char2.png',contain,center);
+      }
+      .op3 .icon{
+        @include bgImages('char3.png', contain, center)
+      }
+    }
+
+  }
+  &__registerUser{
+    //background-color: lightgoldenrodyellow;
+    height: 80vh;
+    @include bgImages('invit_1366.png', cover, top center);
+    @include gridBase;
+    &--content{
+      // background-color: darkmagenta;
+      grid-column: 6 / 12;
+      grid-row: 4 / 11;
+      @include centerFlex;
+      flex-wrap: wrap;
+      text-align: center;
+      .title{
+        width: 100%;
+        height: 2px;
+        margin: 1rem 0 1.5rem 0;
+        h2{
+          color:$secundario
+        }
+
+      }
+      .text{
+        // background-color: slateblue;
+        width: 100%;
+        margin: 1rem 0;
+        padding: 1rem 0;
+        p{
           color: #fff;
         }
       }
-      &-content{
-        // background-color: rgba(255, 255, 255, 0.5);
-        grid-column: 2 / 12;
-        grid-row: 3 / 11;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+
+      .action{
+        // background-color: slategray;
+        width: 100%;
+        @include centerFlex;
+        flex-wrap: wrap;
+        &__icon{
+          // background-color: red;
+          @include bgImages('icono.svg', contain, center);
+          box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+          width: 70px;
+          height: 70px;
+        }
+        &__call{
+          // background-color: forestgreen;
+          width: 100%;
+          padding: 1rem 0;
+          p{
+            color:#fff;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  &__providerDownload{
+    //background-color: aqua;
+    @include bgImages('descargas.png', contain, bottom);
+    height: 100vh;
+    @include gridBase;
+    &--wrapper{
+      //background-color: firebrick;
+      grid-column: 4 / 10;
+      grid-row: 2 / 12;
+      @include centerFlex;
+      flex-wrap: wrap;
+      .provider{
+        //background-color: blue;
+        @include centerFlex;
         flex-wrap: wrap;
         text-align: center;
-        .title{
-          color:$primario;
-          font-size: 1rem;
-        }
-        .text{
-          text-align: justify;
-          background-color: rgba(255, 255, 255, 0.5);
-          padding: 1rem 1rem 1rem 2rem;
-        }
-        .address{
-          text-align: center;
-          font-size: 1.5rem;
-          p{
-            color: #d60b52;
-          }
-        }
-      }
-    }
-  }
-  &__access{
-    // background-color: goldenrod;
-    // height: 40vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    &--link{
-      // background-color: darkgreen;
-      height: 250px;
-      width: 250px;
-      margin: 2rem 1rem;
-      .accImg{
-        background: linear-gradient(rgba(237, 28, 40,1), rgba(186, 34, 91,1));
-        border-radius: 40px;
-        height: 80%;
-        width: 80%;
-      }
-      .accTxt{
-        text-align: center;
-        font-size: 1.5rem;
-        color: blue;
-      }
-    }
-  }
-  &__infoParallax{
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-
-    height: 60vh;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr );
-    align-items: center;
-    &--content{
-      background-color: rgba(255, 255, 255, 0.5);
-      grid-column: 1 / 12;
-      padding: 4rem 1rem;
-    }
-    &--title{
-      // background-color: gold;
-      grid-column: 2 / 12;
-      color: #d60b52;
-      text-shadow: 2px 2px 5px #ffffff;
-      font-size: 3.5rem;
-      display: flex;
-      justify-content: center;align-items: center;
-      font-family: $ftRoboto;
-      font-weight: 700;
-    }
-  }
-  .parL{
-    background-image: url(../../../assets/images/par1.jpg);
-    background-position: bottom;
-  }
-  .parR{
-    background-image: url(../../../assets/images/par2.jpg);
-    background-position: center;
-  }
-  &__shop{
-    background-image: url(../../../assets/images/bgC.png);
-    background-repeat: no-repeat;
-    background-size: 350%;
-    background-position: 0 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 4rem 0;
-    &--product{
-      // background-color: hotpink;
-      margin: 2rem 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      //width: 90vw;
-      &-img{
-        // background-color: blueviolet;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
-        .productBack{
-          height: 250px;
-          width: 250px;
-          background: linear-gradient(rgba(237, 28, 40,1), rgba(186, 34, 91,1));
-          border-radius: 100%;
-
-          .productImg{
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            height: 100%;
-            width: 100%;
-          }
-        }
-      }
-      &-content{
-        // background-color: seagreen;
-        text-align: center;
-        // margin: 0 1rem;
-        padding: 1.5rem;
-        z-index: 10;
-        .productPrice{
-          font-size: 1.2rem;
+        margin: 1.5rem 0;
+        &__title{
           padding: 1rem 0;
-          color: $primario;
+          h2{
+            font-size: 2rem;
+          }
+        }
+        &__action{
+          //background-color: firebrick;
+          @include centerFlex;
+          flex-wrap: wrap;
+          margin: 1rem 0;
+          .icon{
+            //background-color: orchid;
+            @include bgImages('icono.svg', contain, center);
+            box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+            width: 70px;
+            height: 70px;
+          }
+          .call{
+            width: 100%;
+            h3{
+              font-size: 1.5rem;
+              color: $primario;
+            }
+          }
         }
       }
+      .download{
+        //background-color: seagreen;
+        @include centerFlex;
+        flex-wrap: wrap;
+        margin: 5rem 3rem 0 3rem;
+        color: #fff;
+        &__title{
+          text-align: center;
+          margin: 1rem 0;
+          h2{
+            font-size: 1.5rem;
+            color:$secundario;
+          }
+        }
+        &__content{
+          text-align: justify;
+          margin: 1rem 0;
+        }
+        &__access{
+          // background-color: blueviolet;
+          width: 90%;
+          @include centerFlex;
+          flex-wrap: nowrap;
+          .googlePlay, .appStore{
+            width: 25%;
+          }
+        }
+      }
+
     }
-    .sectL{
-      //flex-direction: row-reverse;
+  }
+  &__contact{
+    //background-color: blue;
+    height: 50vh;
+    @include centerFlex;
+    flex-wrap: wrap;
+    &--title{
+      //background-color: aqua;
+      width: 100%;
+      text-align: center;
     }
-  }
-  .sec2{
-    background-position: 100% 20%;
-  }
-  .img01{
-    background-image: url(../../../assets/images/pr1.png);
-  }
-  .img02{
-    background-image: url(../../../assets/images/pr2.png);
-  }
-  .img03{
-    background-image: url(../../../assets/images/pr3.png);
-  }
-  .img04{
-    background-image: url(../../../assets/images/pr4.png);
-  }
-  .img05{
-    background-image: url(../../../assets/images/pr1.png);
-  }
-  .img06{
-    background-image: url(../../../assets/images/pr2.png);
-  }
-  .img07{
-    background-image: url(../../../assets/images/pr3.png);
-  }
-  .img08{
-    background-image: url(../../../assets/images/pr4.png);
+    &--form{
+      //background-color: red;
+      width: 100%;
+      @include centerFlex;
+      .inputText{
+        width: 400px;
+        margin:0.5rem 0;
+        padding: .8rem;
+        border-radius: 40px;
+        text-decoration: none;
+      }
+      .inputUser{
+        //background-color: rosybrown;
+        padding: 1.5rem;
+      }
+      .inputProvider{
+        //background-color: fuchsia;
+        padding: 1.5rem;
+      }
+      .btn{
+        //background-color: olive;
+        padding: 1.5rem;
+        .inputBtn{
+          padding: .8rem 3rem;
+          border-radius: 40px;
+          //border-bottom: 1px solid red;
+          text-decoration: none;
+          @include gradient($grPrimario, $grSecundario);
+          box-shadow:0 0 12px 1px $sbSecundario;
+          color: #fff;
+        }
+      }
+
+    }
+    .inputNote{
+        font-size: 0.8rem;
+        font-style: italic;
+      }
   }
 }
+
 .footer{
-  background-image: url(../../../assets/images/imgFooter2.png);
-  background-repeat: no-repeat;
-  background-position: -10% 0;
-  background-size: 130%;
-  height: 60vh;
-  .footerWrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    // margin: 1rem;
-    z-index: 100;
-    margin-right:0;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255,0.6);
-  }
-  &__title{
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0;
-    h3{
-      font-size: 1.2rem;
-      color: $primario;
-    }
-  }
-  &__subtitle{
-    width: 100%;
-    text-align: center;
-    color: darkblue;
-  }
-  &__image{
-    background-image: url(../../../assets/images/logo.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size:contain;
-    height: 300px;
-    width: 550px;
+  //background-color: orangered;
+  @include bgImages('footer_1200.png', 100%, 0 85%);
+  height: 50vh;
+  @include centerFlex;
+  &__logo{
+    @include bgImages('logoNegativo.svg', contain, center);
+    //background-color: olive;
+    height: 50%;
+    width: 50%;
   }
 }
 
@@ -501,310 +497,47 @@ header{
 // ======================= 480 => 599 ===========================
 // ================================================================
 @include mQ(smallS){
-  .hero{
-  // background-color: red;
-  // background-image: url(../../../assets/images/imgHeader.png);
-  // background-repeat: no-repeat;
-  // background-position: top center;
-  background-size: 250%;
-  .subtitle{
-    //background-color: orange;
-    grid-column: 2 / 12;
-    grid-row: 3 / 9;
+  body{
+    background-color: red;
   }
-}
-  .main{
-  &__corporate{
-    height: 70vh;
-    &--wrapper{
-
-      &-background{
-        background-position: 250% 50%;
-        background-size: 120%;
-      }
-    }
-  }
-  &__shop{
-    background-size: 250%;
-    background-position: -10% 50%;
-    .sectL{
-      //flex-direction: row-reverse;
-    }
-  }
-  .sec2{
-    background-position: 115% 20%;
-  }
-}
-  .footer{
-  background-position: -10% 0;
-  background-size: 130%;
-
-  height: 60vh;
-  .footerWrapper{
-    padding: 2.1rem 1rem;
-  }
-}
 }
 // ================================================================
 // ======================= 600 => 759 ===========================
 // ================================================================
 @include mQ(mediumS){
-  .hero{
-  background-size: 200%;
-  .subtitle{
-    //background-color: orange;
-    grid-row: 4 / 9;
+  body{
+    background-color: olivedrab;
   }
-}
-  .main{
-  &__corporate{
-    margin: 2rem 0;
-    &--wrapper{
-
-      &-background{
-        background-position: -350% 50%;
-        background-size: 90%;
-        .title{
-            padding: 1rem 7rem;
-          }
-      }
-    }
-  }
-
-}
-  .footer{
-  background-position: 380% -100%;
-  background-size: 90%;
-
-  height: 60vh;
-  .footerWrapper{
-    padding: 2rem;
-    background-color: rgba(255, 255, 255,0);
-  }
-  &__title{
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0;
-    h3{
-      font-size: 1.5rem;
-      color: $primario;
-    }
-  }
-  &__image{
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 0 50px 50px 0;
-  }
-}
 }
 // ================================================================
 // ======================= 760 => 919 ===========================
 // ================================================================
 @include mQ(wideS){
-  .hero{
-  background-size: 150%;
-}
-  .main{
-  &__corporate{
-    margin: 2rem 0;
-    &--wrapper{
-
-      &-background{
-        background-position: -100% 50%;
-        background-size: 70%;
-        .title{
-            padding: 1rem 7rem;
-          }
-      }
-    }
+  body{
+    background-color: indigo;
   }
-
-}
-  .footer{
-  background-position: 50% 80%;
-  background-size: 50%;
-
-  height: 60vh;
-  .footerWrapper{
-    background-color: rgba(255, 255, 255,0);
-  }
-  &__title{
-    h3{
-      color: $primario;
-    }
-  }
-  &__image{
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 0 50px 50px 0;
-  }
-}
 }
 // ================================================================
 // ======================= 920 => 1199 ===========================
 // ================================================================
 @include mQ(largeS){
   .hero{
-  background-size: 120%;
-}
-  .main{
-  &__corporate{
-    margin: 2rem 0;
-    &--wrapper{
-
-      &-background{
-        background-position: -50% 50%;
-        background-size: 60%;
-      }
-    }
+    background-color: aqua;
   }
-
-  &__shop{
-    background-size: 140%;
-    background-position: -40% 50%;
-    .sectL{
-      //flex-direction: row-reverse;
-    }
-  }
-  .sec2{
-    background-position: 150% 40%;
-  }
-
-}
-  .footer{
-  background-position: 120% 200%;
-  background-size: 50%;
-
-  height: 60vh;
-  .footerWrapper{
-    background-color: rgba(255, 255, 255,0);
-  }
-  &__title{
-    h3{
-      color: $primario;
-    }
-  }
-  &__image{
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 0 50px 50px 0;
-  }
-}
 }
 // ================================================================
 // ======================= 1200 => 1399 ===========================
 // ================================================================
 @include mQ(xlS){
   .hero{
-    background-size: contain;
-    .subtitle{
-      grid-column: 2 / 12;
-      grid-row: 5 / 7;
-    }
-    .containerLogo{
-      grid-column: 4 / 10;
-      grid-row: 8 / 13;
-    }
-  }
-
-  .main{
-    &__corporate{
-      &--wrapper{
-
-        &-background{
-          background-position: -20vh 0;
-          background-size: contain;
-          grid-column: 1 / 6;
-          align-items: center;
-          .title{
-            padding: 1rem 10rem;
-          }
-        }
-        &-content{
-          grid-column: 6 / 12;
-          .title{
-            font-size: 2rem;
-          }
-          .text{
-            background-color: rgba(255, 255, 255, 0);
-            padding: 0;
-          }
-        }
-      }
-    }
-    &__access{
-      &--link{
-        height: 250px;
-        width: 250px;
-        margin: 2rem;
-        .accTxt{
-          font-size: 2.5rem;
-        }
-      }
-    }
-    &__infoParallax{
-      &--content{
-        grid-column: 1 / 7;
-      }
-      &--title{
-        grid-column: 7 / 13;
-        font-size: 7.5rem;
-      }
-    }
-    &__shop{
-      background-size: 70%;
-      background-position: 100vh 70vh;
-      &--product{
-        width: 70vw;
-        flex-wrap: nowrap;
-        &-img{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          .productBack{
-            height: 300px;
-            width: 300px;
-            .productImg{
-              height: 110%;
-              width: 110%;
-            }
-          }
-        }
-        &-content{
-          margin: 0 2rem;
-          padding: 0 2rem;
-          .productPrice{
-            font-size: 2.5rem;
-          }
-        }
-      }
-      .sectL{
-        flex-direction: row-reverse;
-      }
-    }
-    .sec2{
-      background-position: -70% 90%;
-    }
-  }
-  .footer{
-    background-position: 115% 0;
-    background-size: 35%;
-    .footerWrapper{
-      margin: 1rem 4rem;
-      padding: 0;
-      background-color: rgba(255, 255, 255, 0);
-    }
-    &__title{
-      h3{
-        font-size: 2rem;
-      }
-    }
-    &__image{
-      height: 300px;
-      width: 550px;
-    }
+    background-color: crimson;
   }
 }
 // ================================================================
 // ======================= 1400 =>  ===========================
 // ================================================================
 @include mQ(opS){
-
+  .hero{
+    background-color: violet;
+  }
 }
