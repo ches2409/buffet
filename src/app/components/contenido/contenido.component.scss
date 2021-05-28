@@ -178,41 +178,34 @@
 // #########################################################
 
 
-
+// -------------------------- grid para el encabezado --------------------------
 .hero{
   .hero{
-    //background-color: orange;
     height: 100vh;
     @include gridBase;
     &__logo{
-      //background-color: royalblue;
-      grid-column: 2 / 9;
-      grid-row: 3 / 6;
+      grid-column: 2 / 12;
+      grid-row: 2 / 4;
     }
     &__phrase{
-      //background-color: aqua;
-      grid-column: 2 / 9;
-      grid-row: 6 / 7;
+      grid-column: 2 / 12;
+      grid-row: 4 / 5;
     }
     &__register{
-      //background-color: firebrick;
-      grid-column: 2 / 9;
-      grid-row: 8 / 13;
+      grid-column: 2 / 12;
+      grid-row: 7 / 13;
     }
   }
 
 }
 
+// -------------------------- estilo de encabezado --------------------------
 .hero{
-    //background-color: orange;
-    //background-image: url(../../../assets/images/header.png);
-    @include bgImages('hero_1366.png', cover, top left);
+    @include bgImages('hero_360.png', cover, center);
     &__logo{
-      //background-color: royalblue;
       @include bgImages('logoNegativo.svg', contain, center )
     }
     &__phrase{
-      //background-color: aqua;
       @include centerFlex;
       color:$baseredes;
 
@@ -224,19 +217,21 @@
       flex-wrap: wrap;
       .subtitle{
         padding: 4rem 0 0 0;
+        font-size: 1.2rem;
       }
       .apps{
         //background-color: red;
         width: 100%;
-        @include centerFlex
+        @include centerFlex;
+        flex-wrap: wrap;
       }
 
     }
   }
   .googlePlay, .appStore{
-    height: 150px;
-    width: 300px;
-    margin: 0 1rem;
+    height: 110px;
+    width: 110px;
+    margin: -.5rem 1rem;
   }
   .googlePlay{
     @include bgImages('google.png', contain, center);
@@ -245,6 +240,7 @@
     @include bgImages('app.png', contain, center)
   }
 
+  // -------------------------- estilo de cuerpo --------------------------
 
   .main{
   // background-color: yellowgreen;
@@ -295,31 +291,31 @@
 
   }
   &__registerUser{
-    //background-color: lightgoldenrodyellow;
+    //background-color: rgb(79, 236, 79);
     height: 80vh;
-    @include bgImages('invit_1366.png', cover, top center);
+    @include bgImages('invit_360.png', cover, top);
     @include gridBase;
     &--content{
-      // background-color: darkmagenta;
-      grid-column: 6 / 12;
-      grid-row: 4 / 11;
+      //background-color: darkmagenta;
+      grid-column: 2 / 12;
+      grid-row: 1 / 12;
       @include centerFlex;
       flex-wrap: wrap;
       text-align: center;
       .title{
         width: 100%;
         height: 2px;
-        margin: 1rem 0 1.5rem 0;
+        margin: .5rem 0;
         h2{
           color:$secundario
         }
 
       }
       .text{
-        // background-color: slateblue;
+        //background-color: slateblue;
         width: 100%;
-        margin: 1rem 0;
-        padding: 1rem 0;
+        //margin: 1rem 0;
+        padding: .5rem 0;
         p{
           color: #fff;
         }
@@ -327,7 +323,7 @@
 
       .action{
         // background-color: slategray;
-        width: 100%;
+        width: 90%;
         @include centerFlex;
         flex-wrap: wrap;
         &__icon{
@@ -342,7 +338,7 @@
           width: 100%;
           padding: 1rem 0;
           p{
-            color:#fff;
+            color:$secundario;
             font-size: 1.5rem;
           }
         }
@@ -351,12 +347,12 @@
   }
   &__providerDownload{
     //background-color: aqua;
-    @include bgImages('descargas.png', contain, bottom);
-    height: 100vh;
+    @include bgImages('desc_360.png', contain, bottom);
+    //height: 100vh;
     @include gridBase;
     &--wrapper{
       //background-color: firebrick;
-      grid-column: 4 / 10;
+      grid-column: 2 / 12;
       grid-row: 2 / 12;
       @include centerFlex;
       flex-wrap: wrap;
@@ -376,7 +372,7 @@
           //background-color: firebrick;
           @include centerFlex;
           flex-wrap: wrap;
-          margin: 1rem 0;
+          margin: 1rem 0 0 0;
           .icon{
             //background-color: orchid;
             @include bgImages('icono.svg', contain, center);
@@ -397,8 +393,8 @@
         //background-color: seagreen;
         @include centerFlex;
         flex-wrap: wrap;
-        margin: 5rem 3rem 0 3rem;
-        color: #fff;
+        margin: 0 1.5rem;
+        //color: $color;
         &__title{
           text-align: center;
           margin: 1rem 0;
@@ -412,12 +408,13 @@
           margin: 1rem 0;
         }
         &__access{
-          // background-color: blueviolet;
-          width: 90%;
+          //background-color: blueviolet;
+          width: 100%;
           @include centerFlex;
-          flex-wrap: nowrap;
+          flex-wrap: wrap;
           .googlePlay, .appStore{
-            width: 25%;
+            width: 70%;
+            margin: -.5rem 0;
           }
         }
       }
@@ -426,20 +423,22 @@
   }
   &__contact{
     //background-color: blue;
-    height: 50vh;
+    //height: 50vh;
     @include centerFlex;
     flex-wrap: wrap;
     &--title{
       //background-color: aqua;
       width: 100%;
       text-align: center;
+      padding: 3rem 0;
     }
     &--form{
       //background-color: red;
-      width: 100%;
+      //width: 100%;
       @include centerFlex;
+      flex-wrap: wrap;
       .inputText{
-        width: 400px;
+        width: 300px;
         margin:0.5rem 0;
         padding: .8rem;
         border-radius: 40px;
@@ -469,22 +468,24 @@
 
     }
     .inputNote{
-        font-size: 0.8rem;
-        font-style: italic;
-      }
+      margin: 1rem 2rem;
+      font-size: 0.8rem;
+      font-style: italic;
+    }
   }
 }
 
+// -------------------------- estilo de pie de página --------------------------
 .footer{
   //background-color: orangered;
-  @include bgImages('footer_1200.png', 100%, 0 85%);
-  height: 50vh;
+  @include bgImages('footer_420.png', cover, center);
+  height: 40vh;
   @include centerFlex;
   &__logo{
     @include bgImages('logoNegativo.svg', contain, center);
     //background-color: olive;
-    height: 50%;
-    width: 50%;
+    height: 60%;
+    width: 60%;
   }
 }
 
@@ -497,9 +498,329 @@
 // ======================= 480 => 599 ===========================
 // ================================================================
 @include mQ(smallS){
-  body{
-    background-color: red;
+  // .hero{
+  //   background-color: red;
+  // }
+
+
+  // -------------------------- grid para el encabezado --------------------------
+.hero{
+  .hero{
+    // background-color: orange;
+    height: 100vh;
+    @include gridBase;
+    &__logo{
+      // background-color: royalblue;
+      grid-column: 2 / 12;
+      grid-row: 2 / 4;
+    }
+    &__phrase{
+      //background-color: aqua;
+      grid-column: 2 / 12;
+      grid-row: 4 / 5;
+    }
+    &__register{
+      // background-color: firebrick;
+      grid-column: 2 / 12;
+      grid-row: 8 / 13;
+    }
   }
+
+}
+
+// -------------------------- estilo de encabezado --------------------------
+.hero{
+    //background-color: orange;
+    //background-image: url(../../../assets/images/header.png);
+    //@include bgImages('hero_360.png', cover, center);
+    &__logo{
+      //background-color: royalblue;
+      //@include bgImages('logoNegativo.svg', contain, center )
+    }
+    &__phrase{
+      //background-color: aqua;
+      @include centerFlex;
+      //color:$baseredes;
+      text-align: center;
+
+    }
+    &__register{
+      //background-color: firebrick;
+      //text-align: center;
+      //@include centerFlex;
+      // flex-wrap: wrap;
+      .subtitle{
+        // padding: 4rem 0 0 0;
+      }
+      .apps{
+        //background-color: red;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+      }
+
+    }
+  }
+  .googlePlay, .appStore{
+    height: 100px;
+    width: 200px;
+    margin: 0 1rem;
+  }
+  .googlePlay{
+    // @include bgImages('google.png', contain, center);
+  }
+  .appStore{
+    // @include bgImages('app.png', contain, center)
+  }
+
+  // -------------------------- estilo de cuerpo --------------------------
+
+  .main{
+  // background-color: yellowgreen;
+  &__plus{
+    //background-color: salmon;
+    &--options{
+      //background-color: red;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .optionContainer{
+        //background-color: forestgreen;
+        // text-align: center;
+        // height: 300px;
+        // width: 300px;
+        // margin: 1rem;
+        // display: flex;
+        // justify-content: center;
+        // flex-wrap: wrap;
+        .icon{
+          //background-color: sienna;
+          // margin: 1rem 0;
+          // padding: 1rem 0;
+          // height: 40%;
+          // width: 100%;
+        }
+        .title{
+          // background-color: lawngreen;
+          // width: 100%;
+          h2{
+            // font-size: 1.5rem;
+          }
+        }
+        .text{
+          // background-color: fuchsia;
+          // width: 100%;
+        }
+      }
+      .op1 .icon{
+        // @include bgImages('char1.png', contain, center);
+      }
+      .op2 .icon{
+        // @include bgImages('char2.png',contain,center);
+      }
+      .op3 .icon{
+        // @include bgImages('char3.png', contain, center)
+      }
+    }
+
+  }
+  &__registerUser{
+    //background-color: rgb(79, 236, 79);
+    height: 80vh;
+    @include bgImages('invit_420.png', cover, top);
+    // @include gridBase;
+    &--content{
+      //background-color: darkmagenta;
+      // grid-column: 2 / 12;
+      // grid-row: 2 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      // text-align: center;
+      .title{
+        // width: 100%;
+        // height: 2px;
+        // margin: 1rem 0 1.5rem 0;
+        h2{
+          // color:$secundario
+        }
+
+      }
+      .text{
+        // background-color: slateblue;
+        // width: 100%;
+        // margin: 1rem 0;
+        // padding: 1rem 0;
+        p{
+          // color: #fff;
+        }
+      }
+
+      .action{
+        // background-color: slategray;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        &__icon{
+          // background-color: red;
+          // @include bgImages('icono.svg', contain, center);
+          // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+          // width: 70px;
+          // height: 70px;
+        }
+        &__call{
+          // background-color: forestgreen;
+          // width: 100%;
+          // padding: 1rem 0;
+          p{
+            // color:#fff;
+            // font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  &__providerDownload{
+    // background-color: aqua;
+    @include bgImages('desc_600.png', contain, bottom);
+    //height: 100vh;
+    // @include gridBase;
+    &--wrapper{
+      //background-color: firebrick;
+      // grid-column: 2 / 12;
+      // grid-row: 2 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .provider{
+        //background-color: blue;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        // text-align: center;
+        margin: 0;
+        &__title{
+          //padding: 1rem 0;
+          h2{
+            //font-size: 2rem;
+          }
+        }
+        &__action{
+          //background-color: firebrick;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          //margin: 1.5rem 0 0 0;
+          .icon{
+            //background-color: orchid;
+            // @include bgImages('icono.svg', contain, center);
+            // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+            // width: 70px;
+            // height: 70px;
+          }
+          .call{
+            //width: 100%;
+            h3{
+              // font-size: 1.5rem;
+              // color: $primario;
+            }
+          }
+        }
+      }
+      .download{
+        // background-color: seagreen;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        //margin: 0 1.5rem;
+        //color: $color;
+        &__title{
+          // text-align: center;
+          // margin: 1rem 0;
+          h2{
+            // font-size: 1.5rem;
+            // color:$secundario;
+          }
+        }
+        &__content{
+          // text-align: justify;
+          margin: 1rem 0;
+        }
+        &__access{
+          //background-color: blueviolet;
+          // width: 100%;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          .googlePlay, .appStore{
+            width: 60%;
+          }
+        }
+      }
+
+    }
+  }
+  &__contact{
+    //background-color: blue;
+    //height: 50vh;
+    // @include centerFlex;
+    // flex-wrap: wrap;
+    &--title{
+      //background-color: aqua;
+      // width: 100%;
+      // text-align: center;
+      // padding: 3rem 0;
+    }
+    &--form{
+      //background-color: red;
+      //width: 100%;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .inputText{
+        // width: 300px;
+        // margin:0.5rem 0;
+        // padding: .8rem;
+        // border-radius: 40px;
+        // text-decoration: none;
+      }
+      .inputUser{
+        //background-color: rosybrown;
+        // padding: 1.5rem;
+      }
+      .inputProvider{
+        //background-color: fuchsia;
+        // padding: 1.5rem;
+      }
+      .btn{
+        //background-color: olive;
+        // padding: 1.5rem;
+        .inputBtn{
+          // padding: .8rem 3rem;
+          // border-radius: 40px;
+          //border-bottom: 1px solid red;
+          // text-decoration: none;
+          // @include gradient($grPrimario, $grSecundario);
+          // box-shadow:0 0 12px 1px $sbSecundario;
+          // color: #fff;
+        }
+      }
+
+    }
+    .inputNote{
+      // margin: 1rem 2rem;
+      // font-size: 0.8rem;
+      // font-style: italic;
+    }
+  }
+}
+
+// -------------------------- estilo de pie de página --------------------------
+.footer{
+  //background-color: orangered;
+  @include bgImages('footer_420.png', cover, center);
+  // height: 40vh;
+  // @include centerFlex;
+  &__logo{
+    // @include bgImages('logoNegativo.svg', contain, center);
+    //background-color: olive;
+    // height: 60%;
+    // width: 60%;
+  }
+}
+
 }
 // ================================================================
 // ======================= 600 => 759 ===========================
@@ -508,6 +829,328 @@
   body{
     background-color: olivedrab;
   }
+
+
+  // -------------------------- grid para el encabezado --------------------------
+.hero{
+  .hero{
+    // background-color: orange;
+    height: 100vh;
+    @include gridBase;
+    &__logo{
+      // background-color: royalblue;
+      grid-column: 2 / 12;
+      grid-row: 2 / 4;
+    }
+    &__phrase{
+      //background-color: aqua;
+      grid-column: 2 / 12;
+      grid-row: 4 / 5;
+    }
+    &__register{
+      // background-color: firebrick;
+      grid-column: 2 / 12;
+      grid-row: 8 / 13;
+    }
+  }
+
+}
+
+// -------------------------- estilo de encabezado --------------------------
+.hero{
+    //background-color: orange;
+    //background-image: url(../../../assets/images/header.png);
+    @include bgImages('hero_600.png', cover, center);
+    &__logo{
+      //background-color: royalblue;
+      //@include bgImages('logoNegativo.svg', contain, center )
+    }
+    &__phrase{
+      //background-color: aqua;
+      // @include centerFlex;
+      //color:$baseredes;
+      // text-align: center;
+
+    }
+    &__register{
+      //background-color: firebrick;
+      //text-align: center;
+      //@include centerFlex;
+      // flex-wrap: wrap;
+      .subtitle{
+        // padding: 4rem 0 0 0;
+      }
+      .apps{
+        //background-color: red;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+      }
+
+    }
+  }
+  .googlePlay, .appStore{
+    // height: 100px;
+    // width: 200px;
+    // margin: 0 1rem;
+  }
+  .googlePlay{
+    // @include bgImages('google.png', contain, center);
+  }
+  .appStore{
+    // @include bgImages('app.png', contain, center)
+  }
+
+  // -------------------------- estilo de cuerpo --------------------------
+
+  .main{
+  // background-color: yellowgreen;
+  &__plus{
+    //background-color: salmon;
+    &--options{
+      //background-color: red;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .optionContainer{
+        //background-color: forestgreen;
+        // text-align: center;
+        // height: 300px;
+        // width: 300px;
+        // margin: 1rem;
+        // display: flex;
+        // justify-content: center;
+        // flex-wrap: wrap;
+        .icon{
+          //background-color: sienna;
+          // margin: 1rem 0;
+          // padding: 1rem 0;
+          // height: 40%;
+          // width: 100%;
+        }
+        .title{
+          // background-color: lawngreen;
+          // width: 100%;
+          h2{
+            // font-size: 1.5rem;
+          }
+        }
+        .text{
+          // background-color: fuchsia;
+          // width: 100%;
+        }
+      }
+      .op1 .icon{
+        // @include bgImages('char1.png', contain, center);
+      }
+      .op2 .icon{
+        // @include bgImages('char2.png',contain,center);
+      }
+      .op3 .icon{
+        // @include bgImages('char3.png', contain, center)
+      }
+    }
+
+  }
+  &__registerUser{
+    //background-color: rgb(79, 236, 79);
+    height: 80vh;
+    @include bgImages('invit_600.png', cover, top);
+    // @include gridBase;
+    &--content{
+      //background-color: darkmagenta;
+      // grid-column: 2 / 12;
+      // grid-row: 2 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      // text-align: center;
+      .title{
+        // width: 100%;
+        // height: 2px;
+        // margin: 1rem 0 1.5rem 0;
+        h2{
+          // color:$secundario
+        }
+
+      }
+      .text{
+        // background-color: slateblue;
+        // width: 100%;
+        // margin: 1rem 0;
+        // padding: 1rem 0;
+        p{
+          // color: #fff;
+        }
+      }
+
+      .action{
+        // background-color: slategray;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        &__icon{
+          // background-color: red;
+          // @include bgImages('icono.svg', contain, center);
+          // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+          // width: 70px;
+          // height: 70px;
+        }
+        &__call{
+          // background-color: forestgreen;
+          // width: 100%;
+          // padding: 1rem 0;
+          p{
+            // color:#fff;
+            // font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  &__providerDownload{
+    // background-color: aqua;
+    @include bgImages('desc_760.png', contain, bottom);
+    //height: 100vh;
+    // @include gridBase;
+    &--wrapper{
+      //background-color: firebrick;
+      // grid-column: 2 / 12;
+      // grid-row: 2 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .provider{
+        //background-color: blue;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        // text-align: center;
+        //margin: 0;
+        &__title{
+          //padding: 1rem 0;
+          h2{
+            //font-size: 2rem;
+          }
+        }
+        &__action{
+          //background-color: firebrick;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          //margin: 1.5rem 0 0 0;
+          .icon{
+            //background-color: orchid;
+            // @include bgImages('icono.svg', contain, center);
+            // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+            // width: 70px;
+            // height: 70px;
+          }
+          .call{
+            //width: 100%;
+            h3{
+              // font-size: 1.5rem;
+              // color: $primario;
+            }
+          }
+        }
+      }
+      .download{
+        // background-color: seagreen;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        //margin: 0 1.5rem;
+        //color: $color;
+        &__title{
+          // text-align: center;
+          // margin: 1rem 0;
+          h2{
+            // font-size: 1.5rem;
+            // color:$secundario;
+          }
+        }
+        &__content{
+          // background-color: rebeccapurple;
+          // text-align: justify;
+          margin: .5rem 4rem;
+        }
+        &__access{
+          //background-color: blueviolet;
+          // width: 100%;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          .googlePlay, .appStore{
+            width: 50%;
+          }
+        }
+      }
+
+    }
+  }
+  &__contact{
+    //background-color: blue;
+    //height: 50vh;
+    // @include centerFlex;
+    // flex-wrap: wrap;
+    &--title{
+      //background-color: aqua;
+      // width: 100%;
+      // text-align: center;
+      // padding: 3rem 0;
+    }
+    &--form{
+      //background-color: red;
+      //width: 100%;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .inputText{
+        width: 400px;
+        // margin:0.5rem 0;
+        // padding: .8rem;
+        // border-radius: 40px;
+        // text-decoration: none;
+      }
+      .inputUser{
+        //background-color: rosybrown;
+        // padding: 1.5rem;
+      }
+      .inputProvider{
+        //background-color: fuchsia;
+        // padding: 1.5rem;
+      }
+      .btn{
+        //background-color: olive;
+        // padding: 1.5rem;
+        .inputBtn{
+          // padding: .8rem 3rem;
+          // border-radius: 40px;
+          //border-bottom: 1px solid red;
+          // text-decoration: none;
+          // @include gradient($grPrimario, $grSecundario);
+          // box-shadow:0 0 12px 1px $sbSecundario;
+          // color: #fff;
+        }
+      }
+
+    }
+    .inputNote{
+      // margin: 1rem 2rem;
+      // font-size: 0.8rem;
+      // font-style: italic;
+    }
+  }
+}
+
+// -------------------------- estilo de pie de página --------------------------
+.footer{
+  //background-color: orangered;
+  @include bgImages('footer_600.png', cover, center);
+  height: 50vh;
+  // @include centerFlex;
+  &__logo{
+    // @include bgImages('logoNegativo.svg', contain, center);
+    //background-color: olive;
+    // height: 60%;
+    // width: 60%;
+  }
+}
+
+
 }
 // ================================================================
 // ======================= 760 => 919 ===========================
@@ -516,28 +1159,1316 @@
   body{
     background-color: indigo;
   }
+
+
+  // -------------------------- grid para el encabezado --------------------------
+.hero{
+  .hero{
+    // background-color: orange;
+    height: 100vh;
+    @include gridBase;
+    &__logo{
+      // background-color: royalblue;
+      grid-column: 2 / 12;
+      grid-row: 2 / 4;
+    }
+    &__phrase{
+      //background-color: aqua;
+      grid-column: 2 / 12;
+      grid-row: 4 / 5;
+    }
+    &__register{
+      // background-color: firebrick;
+      grid-column: 2 / 12;
+      grid-row: 8 / 13;
+    }
+  }
+
+}
+
+// -------------------------- estilo de encabezado --------------------------
+.hero{
+    //background-color: orange;
+    //background-image: url(../../../assets/images/header.png);
+    @include bgImages('hero_760.png', cover, center);
+    &__logo{
+      //background-color: royalblue;
+      //@include bgImages('logoNegativo.svg', contain, center )
+    }
+    &__phrase{
+      //background-color: aqua;
+      // @include centerFlex;
+      //color:$baseredes;
+      // text-align: center;
+
+    }
+    &__register{
+      //background-color: firebrick;
+      //text-align: center;
+      //@include centerFlex;
+      // flex-wrap: wrap;
+      .subtitle{
+        // padding: 4rem 0 0 0;
+      }
+      .apps{
+        //background-color: red;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+      }
+
+    }
+  }
+  .googlePlay, .appStore{
+    // height: 100px;
+    // width: 200px;
+    // margin: 0 1rem;
+  }
+  .googlePlay{
+    // @include bgImages('google.png', contain, center);
+  }
+  .appStore{
+    // @include bgImages('app.png', contain, center)
+  }
+
+  // -------------------------- estilo de cuerpo --------------------------
+
+  .main{
+  // background-color: yellowgreen;
+  &__plus{
+    //background-color: salmon;
+    &--options{
+      //background-color: red;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .optionContainer{
+        //background-color: forestgreen;
+        // text-align: center;
+        // height: 300px;
+        // width: 300px;
+        // margin: 1rem;
+        // display: flex;
+        // justify-content: center;
+        // flex-wrap: wrap;
+        .icon{
+          //background-color: sienna;
+          // margin: 1rem 0;
+          // padding: 1rem 0;
+          // height: 40%;
+          // width: 100%;
+        }
+        .title{
+          // background-color: lawngreen;
+          // width: 100%;
+          h2{
+            // font-size: 1.5rem;
+          }
+        }
+        .text{
+          // background-color: fuchsia;
+          // width: 100%;
+        }
+      }
+      .op1 .icon{
+        // @include bgImages('char1.png', contain, center);
+      }
+      .op2 .icon{
+        // @include bgImages('char2.png',contain,center);
+      }
+      .op3 .icon{
+        // @include bgImages('char3.png', contain, center)
+      }
+    }
+
+  }
+  &__registerUser{
+    //background-color: rgb(79, 236, 79);
+    height: 80vh;
+    @include bgImages('invit_760.png', cover, top);
+    // @include gridBase;
+    &--content{
+      //background-color: darkmagenta;
+      // grid-column: 2 / 12;
+      grid-row: 3 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      // text-align: center;
+      .title{
+        // width: 100%;
+        // height: 2px;
+        // margin: 1rem 0 1.5rem 0;
+        h2{
+          // color:$secundario
+        }
+
+      }
+      .text{
+        //background-color: slateblue;
+        // width: 100%;
+        margin: 0 5rem;
+        // padding: 1rem 0;
+        p{
+          // color: #fff;
+        }
+      }
+
+      .action{
+        // background-color: slategray;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        &__icon{
+          // background-color: red;
+          // @include bgImages('icono.svg', contain, center);
+          // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+          // width: 70px;
+          // height: 70px;
+        }
+        &__call{
+          // background-color: forestgreen;
+          // width: 100%;
+          // padding: 1rem 0;
+          p{
+            // color:#fff;
+            // font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  &__providerDownload{
+    // background-color: aqua;
+    @include bgImages('desc_760.png', contain, bottom);
+    //height: 100vh;
+    // @include gridBase;
+    &--wrapper{
+      //background-color: firebrick;
+      // grid-column: 2 / 12;
+      // grid-row: 2 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .provider{
+        //background-color: blue;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        // text-align: center;
+        //margin: 0;
+        &__title{
+          //padding: 1rem 0;
+          h2{
+            //font-size: 2rem;
+          }
+        }
+        &__action{
+          //background-color: firebrick;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          //margin: 1.5rem 0 0 0;
+          .icon{
+            //background-color: orchid;
+            // @include bgImages('icono.svg', contain, center);
+            // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+            // width: 70px;
+            // height: 70px;
+          }
+          .call{
+            //width: 100%;
+            h3{
+              // font-size: 1.5rem;
+              // color: $primario;
+            }
+          }
+        }
+      }
+      .download{
+        // background-color: seagreen;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        //margin: 0 1.5rem;
+        //color: $color;
+        &__title{
+          // text-align: center;
+          // margin: 1rem 0;
+          h2{
+            // font-size: 1.5rem;
+            // color:$secundario;
+          }
+        }
+        &__content{
+          // background-color: rebeccapurple;
+          color:$baseredes;
+          // text-align: justify;
+          margin: .5rem 5rem;
+        }
+        &__access{
+          //background-color: blueviolet;
+          // width: 100%;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          .googlePlay, .appStore{
+            width: 30%;
+          }
+        }
+      }
+
+    }
+  }
+  &__contact{
+    //background-color: blue;
+    //height: 50vh;
+    // @include centerFlex;
+    // flex-wrap: wrap;
+    &--title{
+      //background-color: aqua;
+      // width: 100%;
+      // text-align: center;
+      // padding: 3rem 0;
+    }
+    &--form{
+      //background-color: red;
+      //width: 100%;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .inputText{
+        width: 400px;
+        // margin:0.5rem 0;
+        // padding: .8rem;
+        // border-radius: 40px;
+        // text-decoration: none;
+      }
+      .inputUser{
+        //background-color: rosybrown;
+        // padding: 1.5rem;
+      }
+      .inputProvider{
+        //background-color: fuchsia;
+        // padding: 1.5rem;
+      }
+      .btn{
+        //background-color: olive;
+        // padding: 1.5rem;
+        width: 100%;
+        text-align:center;
+        .inputBtn{
+          // padding: .8rem 3rem;
+          // border-radius: 40px;
+          //border-bottom: 1px solid red;
+          // text-decoration: none;
+          // @include gradient($grPrimario, $grSecundario);
+          // box-shadow:0 0 12px 1px $sbSecundario;
+          // color: #fff;
+        }
+      }
+
+    }
+    .inputNote{
+      // margin: 1rem 2rem;
+      // font-size: 0.8rem;
+      // font-style: italic;
+    }
+  }
+}
+
+// -------------------------- estilo de pie de página --------------------------
+.footer{
+  //background-color: orangered;
+  @include bgImages('footer_760.png', cover, center);
+  height: 50vh;
+  // @include centerFlex;
+  &__logo{
+    // @include bgImages('logoNegativo.svg', contain, center);
+    //background-color: olive;
+    // height: 60%;
+    // width: 60%;
+  }
+}
+
 }
 // ================================================================
 // ======================= 920 => 1199 ===========================
 // ================================================================
 @include mQ(largeS){
   .hero{
-    background-color: aqua;
+    //background-color: aqua;
   }
+
+
+  // -------------------------- grid para el encabezado --------------------------
+.hero{
+  .hero{
+    //background-color: orange;
+    height: 100vh;
+    @include gridBase;
+    &__logo{
+      //background-color: royalblue;
+      grid-column: 2 / 7;
+      //grid-row: 2 / 4;
+    }
+    &__phrase{
+      // background-color: aqua;
+      grid-column: 2 / 7;
+      //grid-row: 4 / 5;
+    }
+    &__register{
+      // background-color: firebrick;
+      //grid-column: 2 / 12;
+      //grid-row: 8 / 13;
+    }
+  }
+
+}
+
+// -------------------------- estilo de encabezado --------------------------
+.hero{
+    //background-color: orange;
+    //background-image: url(../../../assets/images/header.png);
+    @include bgImages('hero_920.png', cover, center);
+    &__logo{
+      //background-color: royalblue;
+      //@include bgImages('logoNegativo.svg', contain, center )
+    }
+    &__phrase{
+      //background-color: aqua;
+      // @include centerFlex;
+      //color:$baseredes;
+      // text-align: center;
+
+    }
+    &__register{
+      //background-color: firebrick;
+      //text-align: center;
+      //@include centerFlex;
+      // flex-wrap: wrap;
+      .subtitle{
+        // padding: 4rem 0 0 0;
+      }
+      .apps{
+        //background-color: red;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+      }
+
+    }
+  }
+  .googlePlay, .appStore{
+    // height: 100px;
+    // width: 200px;
+    // margin: 0 1rem;
+  }
+  .googlePlay{
+    // @include bgImages('google.png', contain, center);
+  }
+  .appStore{
+    // @include bgImages('app.png', contain, center)
+  }
+
+  // -------------------------- estilo de cuerpo --------------------------
+
+  .main{
+  // background-color: yellowgreen;
+  &__plus{
+    //background-color: salmon;
+    &--options{
+      //background-color: red;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .optionContainer{
+        //background-color: forestgreen;
+        // text-align: center;
+        // height: 300px;
+        // width: 300px;
+        // margin: 1rem;
+        // display: flex;
+        // justify-content: center;
+        // flex-wrap: wrap;
+        .icon{
+          //background-color: sienna;
+          // margin: 1rem 0;
+          // padding: 1rem 0;
+          // height: 40%;
+          // width: 100%;
+        }
+        .title{
+          // background-color: lawngreen;
+          // width: 100%;
+          h2{
+            // font-size: 1.5rem;
+          }
+        }
+        .text{
+          // background-color: fuchsia;
+          // width: 100%;
+        }
+      }
+      .op1 .icon{
+        // @include bgImages('char1.png', contain, center);
+      }
+      .op2 .icon{
+        // @include bgImages('char2.png',contain,center);
+      }
+      .op3 .icon{
+        // @include bgImages('char3.png', contain, center)
+      }
+    }
+
+  }
+  &__registerUser{
+    //background-color: rgb(79, 236, 79);
+    height: 80vh;
+    @include bgImages('invit_920.png', cover, top);
+    // @include gridBase;
+    &--content{
+      //background-color: darkmagenta;
+      // grid-column: 2 / 12;
+      //grid-row: 3 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      // text-align: center;
+      .title{
+        // width: 100%;
+        // height: 2px;
+        // margin: 1rem 0 1.5rem 0;
+        h2{
+          // color:$secundario
+        }
+
+      }
+      .text{
+        //background-color: slateblue;
+        // width: 100%;
+        margin: 0 5rem;
+        // padding: 1rem 0;
+        p{
+          // color: #fff;
+        }
+      }
+
+      .action{
+        // background-color: slategray;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        &__icon{
+          // background-color: red;
+          // @include bgImages('icono.svg', contain, center);
+          // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+          // width: 70px;
+          // height: 70px;
+        }
+        &__call{
+          // background-color: forestgreen;
+          // width: 100%;
+          // padding: 1rem 0;
+          p{
+            // color:#fff;
+            // font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  &__providerDownload{
+    // background-color: aqua;
+    @include bgImages('desc_1200.png', contain, bottom);
+    //height: 100vh;
+    // @include gridBase;
+    &--wrapper{
+      //background-color: firebrick;
+      // grid-column: 2 / 12;
+      // grid-row: 2 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .provider{
+        //background-color: blue;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        // text-align: center;
+        //margin: 0;
+        &__title{
+          //padding: 1rem 0;
+          h2{
+            //font-size: 2rem;
+          }
+        }
+        &__action{
+          //background-color: firebrick;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          //margin: 1.5rem 0 0 0;
+          .icon{
+            //background-color: orchid;
+            // @include bgImages('icono.svg', contain, center);
+            // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+            // width: 70px;
+            // height: 70px;
+          }
+          .call{
+            //width: 100%;
+            h3{
+              // font-size: 1.5rem;
+              // color: $primario;
+            }
+          }
+        }
+      }
+      .download{
+        // background-color: seagreen;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        //margin: 0 1.5rem;
+        //color: $color;
+        &__title{
+          // text-align: center;
+          margin: 1rem 3rem;
+          h2{
+            // font-size: 1.5rem;
+            // color:$secundario;
+          }
+        }
+        &__content{
+          //background-color: rebeccapurple;
+          color:$baseredes;
+          // text-align: justify;
+          margin: 0 6rem;
+        }
+        &__access{
+          //background-color: blueviolet;
+          // width: 100%;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          .googlePlay, .appStore{
+            //width: 30%;
+          }
+        }
+      }
+
+    }
+  }
+  &__contact{
+    //background-color: blue;
+    //height: 50vh;
+    // @include centerFlex;
+    // flex-wrap: wrap;
+    &--title{
+      //background-color: aqua;
+      // width: 100%;
+      // text-align: center;
+      // padding: 3rem 0;
+    }
+    &--form{
+      //background-color: red;
+      //width: 100%;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .inputText{
+        width: 400px;
+        // margin:0.5rem 0;
+        // padding: .8rem;
+        // border-radius: 40px;
+        // text-decoration: none;
+      }
+      .inputUser{
+        //background-color: rosybrown;
+        // padding: 1.5rem;
+      }
+      .inputProvider{
+        //background-color: fuchsia;
+        // padding: 1.5rem;
+      }
+      .btn{
+        //background-color: olive;
+        // padding: 1.5rem;
+        width: 100%;
+        text-align:center;
+        .inputBtn{
+          // padding: .8rem 3rem;
+          // border-radius: 40px;
+          //border-bottom: 1px solid red;
+          // text-decoration: none;
+          // @include gradient($grPrimario, $grSecundario);
+          // box-shadow:0 0 12px 1px $sbSecundario;
+          // color: #fff;
+        }
+      }
+
+    }
+    .inputNote{
+      // margin: 1rem 2rem;
+      // font-size: 0.8rem;
+      // font-style: italic;
+    }
+  }
+}
+
+// -------------------------- estilo de pie de página --------------------------
+.footer{
+  //background-color: orangered;
+  @include bgImages('footer_920.png', cover, center);
+  height: 50vh;
+  // @include centerFlex;
+  &__logo{
+    // @include bgImages('logoNegativo.svg', contain, center);
+    //background-color: olive;
+    // height: 60%;
+    // width: 60%;
+  }
+}
+
+
 }
 // ================================================================
 // ======================= 1200 => 1399 ===========================
 // ================================================================
 @include mQ(xlS){
   .hero{
-    background-color: crimson;
+    // background-color: crimson;
   }
+
+
+
+  // -------------------------- grid para el encabezado --------------------------
+.hero{
+  .hero{
+    //background-color: orange;
+    //height: 100vh;
+    //@include gridBase;
+    &__logo{
+      // background-color: royalblue;
+      grid-column: 2 / 9;
+      grid-row: 3 / 5;
+    }
+    &__phrase{
+      // background-color: aqua;
+      grid-column: 2 / 9;
+      grid-row: 5 / 6;
+    }
+    &__register{
+      //background-color: firebrick;
+      grid-column: 2 / 9;
+      grid-row: 9 / 13;
+    }
+  }
+
+}
+
+// -------------------------- estilo de encabezado --------------------------
+.hero{
+    //background-color: orange;
+    //background-image: url(../../../assets/images/header.png);
+    @include bgImages('hero_1200.png', cover, center);
+    &__logo{
+      //background-color: royalblue;
+      //@include bgImages('logoNegativo.svg', contain, center )
+    }
+    &__phrase{
+      //background-color: aqua;
+      // @include centerFlex;
+      //color:$baseredes;
+      // text-align: center;
+
+    }
+    &__register{
+      //background-color: firebrick;
+      //text-align: center;
+      //@include centerFlex;
+      // flex-wrap: wrap;
+      .subtitle{
+        // padding: 4rem 0 0 0;
+      }
+      .apps{
+        //background-color: red;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+      }
+
+    }
+  }
+  .googlePlay, .appStore{
+    // height: 100px;
+    // width: 200px;
+    // margin: 0 1rem;
+  }
+  .googlePlay{
+    // @include bgImages('google.png', contain, center);
+  }
+  .appStore{
+    // @include bgImages('app.png', contain, center)
+  }
+
+  // -------------------------- estilo de cuerpo --------------------------
+
+  .main{
+  // background-color: yellowgreen;
+  &__plus{
+    //background-color: salmon;
+    &--options{
+      //background-color: red;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .optionContainer{
+        //background-color: forestgreen;
+        // text-align: center;
+        // height: 300px;
+        // width: 300px;
+        // margin: 1rem;
+        // display: flex;
+        // justify-content: center;
+        // flex-wrap: wrap;
+        .icon{
+          //background-color: sienna;
+          // margin: 1rem 0;
+          // padding: 1rem 0;
+          // height: 40%;
+          // width: 100%;
+        }
+        .title{
+          // background-color: lawngreen;
+          // width: 100%;
+          h2{
+            // font-size: 1.5rem;
+          }
+        }
+        .text{
+          // background-color: fuchsia;
+          // width: 100%;
+        }
+      }
+      .op1 .icon{
+        // @include bgImages('char1.png', contain, center);
+      }
+      .op2 .icon{
+        // @include bgImages('char2.png',contain,center);
+      }
+      .op3 .icon{
+        // @include bgImages('char3.png', contain, center)
+      }
+    }
+
+  }
+  &__registerUser{
+    //background-color: rgb(79, 236, 79);
+    height: 90vh;
+    @include bgImages('invit_1200.png', cover, center);
+    // @include gridBase;
+    &--content{
+      //background-color: darkmagenta;
+      grid-column: 6 / 12;
+      //grid-row: 3 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      // text-align: center;
+      .title{
+        // width: 100%;
+        // height: 2px;
+        // margin: 1rem 0 1.5rem 0;
+        h2{
+          // color:$secundario
+        }
+
+      }
+      .text{
+        //background-color: slateblue;
+        // width: 100%;
+        margin: 0 5rem;
+        // padding: 1rem 0;
+        p{
+          // color: #fff;
+        }
+      }
+
+      .action{
+        // background-color: slategray;
+        // width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        &__icon{
+          // background-color: red;
+          // @include bgImages('icono.svg', contain, center);
+          // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+          // width: 70px;
+          // height: 70px;
+        }
+        &__call{
+          // background-color: forestgreen;
+          // width: 100%;
+          // padding: 1rem 0;
+          p{
+            // color:#fff;
+            // font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  &__providerDownload{
+    //background-color: aqua;
+    @include bgImages('desc_1366.png', cover, bottom);
+    height: 100vh;
+    // @include gridBase;
+    &--wrapper{
+      //background-color: firebrick;
+      grid-column: 3 / 11;
+      // grid-row: 2 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .provider{
+        //background-color: blue;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        // text-align: center;
+        //margin: 0;
+        &__title{
+          //padding: 1rem 0;
+          h2{
+            //font-size: 2rem;
+          }
+        }
+        &__action{
+          //background-color: firebrick;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          //margin: 1.5rem 0 0 0;
+          .icon{
+            //background-color: orchid;
+            // @include bgImages('icono.svg', contain, center);
+            // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+            // width: 70px;
+            // height: 70px;
+          }
+          .call{
+            //width: 100%;
+            h3{
+              // font-size: 1.5rem;
+              // color: $primario;
+            }
+          }
+        }
+      }
+      .download{
+        // background-color: seagreen;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        //margin: 0 1.5rem;
+        //color: $color;
+        &__title{
+          // text-align: center;
+          margin: 1rem 3rem;
+          h2{
+            // font-size: 1.5rem;
+            // color:$secundario;
+          }
+        }
+        &__content{
+          //background-color: rebeccapurple;
+          color:$baseredes;
+          // text-align: justify;
+          margin: 0 6rem;
+        }
+        &__access{
+          //background-color: blueviolet;
+          // width: 100%;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          .googlePlay, .appStore{
+            //width: 30%;
+          }
+        }
+      }
+
+    }
+  }
+  &__contact{
+    //background-color: blue;
+    //height: 50vh;
+    // @include centerFlex;
+    // flex-wrap: wrap;
+    &--title{
+      //background-color: aqua;
+      // width: 100%;
+      // text-align: center;
+      // padding: 3rem 0;
+    }
+    &--form{
+      //background-color: red;
+      //width: 100%;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .inputText{
+        width: 400px;
+        // margin:0.5rem 0;
+        // padding: .8rem;
+        // border-radius: 40px;
+        // text-decoration: none;
+      }
+      .inputUser{
+        //background-color: rosybrown;
+        // padding: 1.5rem;
+      }
+      .inputProvider{
+        //background-color: fuchsia;
+        // padding: 1.5rem;
+      }
+      .btn{
+        //background-color: olive;
+        // padding: 1.5rem;
+        width: 100%;
+        text-align:center;
+        .inputBtn{
+          // padding: .8rem 3rem;
+          // border-radius: 40px;
+          //border-bottom: 1px solid red;
+          // text-decoration: none;
+          // @include gradient($grPrimario, $grSecundario);
+          // box-shadow:0 0 12px 1px $sbSecundario;
+          // color: #fff;
+        }
+      }
+
+    }
+    .inputNote{
+      // margin: 1rem 2rem;
+      // font-size: 0.8rem;
+      // font-style: italic;
+    }
+  }
+}
+
+// -------------------------- estilo de pie de página --------------------------
+.footer{
+  //background-color: orangered;
+  @include bgImages('footer_1366.png', cover, center);
+  height: 70vh;
+  // @include centerFlex;
+  &__logo{
+    // @include bgImages('logoNegativo.svg', contain, center);
+    //background-color: olive;
+    height: 40%;
+    width: 40%;
+  }
+}
+
 }
 // ================================================================
 // ======================= 1400 =>  ===========================
 // ================================================================
 @include mQ(opS){
   .hero{
-    background-color: violet;
+    // background-color: violet;
   }
+
+
+// -------------------------- grid para el encabezado --------------------------
+.hero{
+  .hero{
+    //background-color: orange;
+    //height: 100vh;
+    // @include gridBase;
+    &__logo{
+      //background-color: royalblue;
+      grid-column: 2 / 9;
+      grid-row: 3 / 6;
+    }
+    &__phrase{
+      //background-color: aqua;
+      grid-column: 2 / 9;
+      grid-row: 6 / 7;
+    }
+    &__register{
+      //background-color: firebrick;
+      grid-column: 2 / 9;
+      // grid-row: 8 / 13;
+    }
+  }
+
+}
+
+// -------------------------- estilo de encabezado --------------------------
+.hero{
+    //background-color: orange;
+    //background-image: url(../../../assets/images/header.png);
+    @include bgImages('hero_1366.png', cover, top left);
+    &__logo{
+      //background-color: royalblue;
+      // @include bgImages('logoNegativo.svg', contain, center )
+    }
+    &__phrase{
+      //background-color: aqua;
+      // @include centerFlex;
+      // color:$baseredes;
+
+    }
+    &__register{
+      //background-color: firebrick;
+      // text-align: center;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .subtitle{
+        // padding: 4rem 0 0 0;
+      }
+      .apps{
+        //background-color: red;
+        // width: 100%;
+        // @include centerFlex
+      }
+
+    }
+  }
+  .googlePlay, .appStore{
+    height: 150px;
+    width: 300px;
+    // margin: 0 1rem;
+  }
+  .googlePlay{
+    // @include bgImages('google.png', contain, center);
+  }
+  .appStore{
+    @include bgImages('app.png', contain, center)
+  }
+
+  // -------------------------- estilo de cuerpo --------------------------
+
+  .main{
+  // background-color: yellowgreen;
+  &__plus{
+    //background-color: salmon;
+    &--options{
+      //background-color: red;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .optionContainer{
+        //background-color: forestgreen;
+        // text-align: center;
+        // height: 300px;
+        // width: 300px;
+        // margin: 1rem;
+        // display: flex;
+        // justify-content: center;
+        // flex-wrap: wrap;
+        .icon{
+          //background-color: sienna;
+          // margin: 1rem 0;
+          // padding: 1rem 0;
+          // height: 40%;
+          // width: 100%;
+        }
+        .title{
+          // background-color: lawngreen;
+          // width: 100%;
+          h2{
+            // font-size: 1.5rem;
+          }
+        }
+        .text{
+          // background-color: fuchsia;
+          // width: 100%;
+        }
+      }
+      .op1 .icon{
+        // @include bgImages('char1.png', contain, center);
+      }
+      .op2 .icon{
+        // @include bgImages('char2.png',contain,center);
+      }
+      .op3 .icon{
+        // @include bgImages('char3.png', contain, center)
+      }
+    }
+
+  }
+  &__registerUser{
+    //background-color: lightgoldenrodyellow;
+    height: 80vh;
+    @include bgImages('invit_1366.png', cover, top center);
+    // @include gridBase;
+    &--content{
+      // background-color: darkmagenta;
+      grid-column: 6 / 12;
+      grid-row: 4 / 11;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      // text-align: center;
+      .title{
+        // width: 100%;
+        // height: 2px;
+        margin: 1rem 0 1.5rem 0;
+        h2{
+          // color:$secundario
+        }
+
+      }
+      .text{
+        // background-color: slateblue;
+        // width: 100%;
+        margin: 1rem 0;
+        padding: 1rem 0;
+        p{
+          // color: #fff;
+        }
+      }
+
+      .action{
+        // background-color: slategray;
+        width: 100%;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        &__icon{
+          // background-color: red;
+          // @include bgImages('icono.svg', contain, center);
+          // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+          // width: 70px;
+          // height: 70px;
+        }
+        &__call{
+          // background-color: forestgreen;
+          // width: 100%;
+          // padding: 1rem 0;
+          p{
+            // color:#fff;
+            // font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  &__providerDownload{
+    //background-color: aqua;
+    @include bgImages('desc_1366.png', contain, bottom);
+    height: 100vh;
+    //@include gridBase;
+    &--wrapper{
+      //background-color: firebrick;
+      grid-column: 4 / 10;
+      // grid-row: 2 / 12;
+      // @include centerFlex;
+      // flex-wrap: wrap;
+      .provider{
+        //background-color: blue;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        // text-align: center;
+        margin: 1.5rem 0;
+        &__title{
+          // padding: 1rem 0;
+          h2{
+            // font-size: 2rem;
+          }
+        }
+        &__action{
+          //background-color: firebrick;
+          // @include centerFlex;
+          // flex-wrap: wrap;
+          margin: 1rem 0;
+          .icon{
+            //background-color: orchid;
+            // @include bgImages('icono.svg', contain, center);
+            // box-shadow: 4px 4px 8px 0px rgba(231,166,26,.5);
+            // width: 70px;
+            // height: 70px;
+          }
+          .call{
+            // width: 100%;
+            h3{
+              // font-size: 1.5rem;
+              // color: $primario;
+            }
+          }
+        }
+      }
+      .download{
+        //background-color: seagreen;
+        // @include centerFlex;
+        // flex-wrap: wrap;
+        margin: 5rem 3rem 0 3rem;
+        // color: #fff;
+        &__title{
+          // text-align: center;
+          margin: 1rem 0;
+          h2{
+            // font-size: 1.5rem;
+            // color:$secundario;
+          }
+        }
+        &__content{
+          // text-align: justify;
+          margin: 1rem 0;
+        }
+        &__access{
+          // background-color: blueviolet;
+          width: 90%;
+          // @include centerFlex;
+          flex-wrap: nowrap;
+          .googlePlay, .appStore{
+            width: 25%;
+          }
+        }
+      }
+
+    }
+  }
+  &__contact{
+    //background-color: blue;
+    height: 50vh;
+    // @include centerFlex;
+    // flex-wrap: wrap;
+    &--title{
+      //background-color: aqua;
+      // width: 100%;
+      // text-align: center;
+    }
+    &--form{
+      //background-color: red;
+      width: 100%;
+      // @include centerFlex;
+      .inputText{
+        // width: 400px;
+        // margin:0.5rem 0;
+        // padding: .8rem;
+        // border-radius: 40px;
+        // text-decoration: none;
+      }
+      .inputUser{
+        //background-color: rosybrown;
+        // padding: 1.5rem;
+      }
+      .inputProvider{
+        //background-color: fuchsia;
+        // padding: 1.5rem;
+      }
+      .btn{
+        //background-color: olive;
+        // padding: 1.5rem;
+        .inputBtn{
+          // padding: .8rem 3rem;
+          // border-radius: 40px;
+          //border-bottom: 1px solid red;
+          // text-decoration: none;
+          // @include gradient($grPrimario, $grSecundario);
+          // box-shadow:0 0 12px 1px $sbSecundario;
+          // color: #fff;
+        }
+      }
+
+    }
+    .inputNote{
+        // font-size: 0.8rem;
+        // font-style: italic;
+      }
+  }
+}
+
+// -------------------------- estilo de pie de página --------------------------
+.footer{
+  //background-color: orangered;
+  @include bgImages('footer_1366.png', 100%, 0 85%);
+  // height: 70vh;
+  // @include centerFlex;
+  &__logo{
+    @include bgImages('logoNegativo.svg', contain, center);
+    //background-color: olive;
+    // height: 40%;
+    // width: 40%;
+  }
+}
 }
